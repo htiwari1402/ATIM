@@ -1,0 +1,24 @@
+<form action="http://www.html.am/html-codes/forms/html-form-tag-action.cfm" target="result" method="get">
+<h1 style = "text-align:center;">Migration Form</h1>
+<div align = "justify">
+<label for = "Ticket Number"> Ticket Number </label>
+<input type="text" name="Ticket Number" id="Ticket Number"><br> </br> 
+<input type="radio" name="gender" value="Informatica Objects"> Informatica Objects 
+<input type="radio" name="gender" value="Unix File Migration"> Unix File Migration<br> </br> 
+<label> Source Repository </label> 
+<select name="Repository">
+<option value="Src_Repo_db" selected>Src_Repo_db</option>
+<option value="Tgt_Repo_db">Tgt_Repo_db</option>
+</select> <br> </br> 
+<label> Target Repository </label> 
+<select name="Repository">
+<option value="Src_Repo_db" selected>Src_Repo_db</option>
+<option value="Tgt_Repo_db">Tgt_Repo_db</option> 
+</select> <br> </br>
+<textarea rows = "4" cols = "28" name = "Folder Name">
+Source Folder,Target Folder</textarea>  <br> </br>
+<label> Upload Informatica Deployment Group Name or .XML File </label>
+<br> </br>
+<input type="file" name="fileupload" accept="*.xml*">
+<p><input type="submit" value="Submit"></p> </div>
+</form>
