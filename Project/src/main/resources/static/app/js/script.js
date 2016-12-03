@@ -16,11 +16,11 @@ function login()
 			{
 				if(parseInt(responseText) == 1)
 					{
-					  alert("Succesful Login");
+						window.location.href ="migration";
 					}
 				else
 					{
-						alert("Invalid Creds");
+						$('#error').html("Invalid username and password !!!");
 					}
 			}
 			);
