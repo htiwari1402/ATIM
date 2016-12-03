@@ -5,6 +5,8 @@ import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileReader;
 
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.springframework.stereotype.Controller;
@@ -16,15 +18,27 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MainController {
 	
 	 @RequestMapping("/home")
-	 public String execShell(/*@RequestParam("")*/) throws Exception {
-	    	
+	 public String home(/*@RequestParam("")*/) throws Exception {    	
 	      return "index";
+	    }
+	 
+	 @RequestMapping("/migration")
+	 public String migration(/*@RequestParam("")*/HttpSession session) throws Exception {	  
+		 if((String)session.getAttribute("username") != null && new String((String)session.getAttribute("username")).length() > 0 )
+	      {
+			 return "migration";
+		  }
+		  else
+		  {
+			 return "invalidSession";
+		  }
 	    }
 	 
 	 @RequestMapping("/auth")
 	 @ResponseBody
 	 public int auth(   @RequestParam("username") String username, 
-			 			@RequestParam("password") String password
+			 			@RequestParam("password") String password,
+			 			HttpSession session
 	  ) throws Exception 
 	 {
 		 	JSONParser parser = new JSONParser();
@@ -34,6 +48,7 @@ public class MainController {
  			String pwd = (String) jsonObject.get("password");
  			if(usr.equals(username) && pwd.equals(password))
  			{
+ 				session.setAttribute("username", username);
  				return 1;
  			}
  			else
