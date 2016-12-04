@@ -1,24 +1,128 @@
-<form action="http://www.html.am/html-codes/forms/html-form-tag-action.cfm" target="result" method="get">
+<!DOCTYPE html>
+<html class="ViHtml" xmlns:ng="http://angularjs.org" id="ng-app"
+	ng-app="votinginsight" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Automation Tool for Informatica Migration</title>
+<style type="text/css">
+body {
+background-color: #f4f4f4;
+color: #5a5656;
+font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+font-size: 16px;
+line-height: 1.5em;
+}
+a { text-decoration: none; }
+h1 { font-size: 1em; }
+h1, p {
+margin-bottom: 10px;
+}
+strong {
+font-weight: bold;
+}
+.uppercase { text-transform: uppercase; }
+
+/* ---------- LOGIN ---------- */
+#login {
+margin: 50px auto;
+width: 300px;
+}
+form fieldset input[type="text"], input[type="password"] {
+background-color: #e5e5e5;
+border: none;
+border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+color: #5a5656;
+font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+font-size: 14px;
+height: 50px;
+outline: none;
+padding: 0px 10px;
+width: 280px;
+-webkit-appearance:none;
+}
+form fieldset input[type="submit"] {
+background-color: #008dde;
+border: none;
+border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+color: #f4f4f4;
+cursor: pointer;
+font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+height: 50px;
+text-transform: uppercase;
+width: 300px;
+-webkit-appearance:none;
+}
+form fieldset a {
+color: #5a5656;
+font-size: 10px;
+}
+</style>
+<script src="app/js/jquery-3.1.1.min.js"></script>
+<script src="app/js/script.js"></script>
+</head>
+<body>
 <h1 style = "text-align:center;">Migration Form</h1>
-<div align = "justify">
+<div align = "center">
+<form id="mig_form" method="post" action="execShell">
 <label for = "Ticket Number"> Ticket Number </label>
-<input type="text" name="Ticket Number" id="Ticket Number"><br> </br> 
-<input type="radio" name="gender" value="Informatica Objects"> Informatica Objects 
-<input type="radio" name="gender" value="Unix File Migration"> Unix File Migration<br> </br> 
+<span style="color:red;" id="tkt_no_show"></span>
+
+<input id="tkt_no" name="tkt_no" type="hidden">
+<br><br>
+ 
+<input type="radio" id="mig_opt" name="mig_opt"  value="0"> Informatica Objects 
+<input type="radio" id="mig_opt" name="mig_opt"  value="1"> Unix File Migration<br>
+
+<label> Source Domain </label> 
+<select id="src_domain" name="src_domain">
+<option value="server1211.mnchost.com" selected>Server 1</option>
+<option value="server1211.mnchost.com">Server 2</option>
+</select> <br> </br> 
+
+<label> Target Domain </label> 
+<select id="tgt_domain" name="tgt_domain">
+<option value="server1211.mnchost.com" selected>Server 1</option>
+<option value="server1211.mnchost.com">Server 2</option>
+</select> <br> </br> 
+
 <label> Source Repository </label> 
-<select name="Repository">
+<select id="src_repo" name="src_repo">
 <option value="Src_Repo_db" selected>Src_Repo_db</option>
 <option value="Tgt_Repo_db">Tgt_Repo_db</option>
 </select> <br> </br> 
 <label> Target Repository </label> 
-<select name="Repository">
+<select id="tgt_repo" name="tgt_repo">
 <option value="Src_Repo_db" selected>Src_Repo_db</option>
 <option value="Tgt_Repo_db">Tgt_Repo_db</option> 
-</select> <br> </br>
-<textarea rows = "4" cols = "28" name = "Folder Name">
-Source Folder,Target Folder</textarea>  <br> </br>
-<label> Upload Informatica Deployment Group Name or .XML File </label>
-<br> </br>
-<input type="file" name="fileupload" accept="*.xml*">
-<p><input type="submit" value="Submit"></p> </div>
-</form>
+</select> <br></br>
+
+<label> Deployment GroupName / XML FileName </label> 
+<input type="text" id="dep_group" name="dev_group">
+
+<label> Enter email to add alerts </label> 
+<select id="email" name="email">
+<option value="poojamittal2391@gmail.com" selected>poojamittal2391@gmail.com</option>
+<option value="htiwari1402@gmail.com">htiwari1402@gmail.com</option> 
+</select> 
+<input type="button" value="Add Email" onclick="addEmail();">
+<br></br>
+<label> Email Group </label> 
+<textarea id="emailGroup" name="emailGroup">
+</textarea>
+
+<br><br>
+<label> Enter Source Folder and Target Folder () </label> 
+<textarea id="control_param_text" name="control_param_text">
+</textarea>
+
+<p><input type="button" value="Submit" onclick="migrate();"></p>
+
+</form> 
+</div>
+
+</body>
+</html>
