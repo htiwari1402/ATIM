@@ -5,69 +5,76 @@ import java.util.List;
 
 public class MigrationParams {
 	
-	public String adminUserName;
-	public String adminPassword;
-	public String sourceRepo;
-	public String targetRepo;
-	public String sourceDomain;
-	public String targetDomain;
-	public String dgName;
-	public List<HashMap<String,String>> sourceTargetMap;
-	public String controlFileName;
+	public int mig_opt;
+	public String src_domain;
+	public String src_repo;
+	public String tgt_domain;
+	public String tgt_repo;
+	public String dev_group;
+	public String emailGroup;
 	
-	public String getAdminUserName() {
-		return adminUserName;
+	
+	
+	public MigrationParams(int mig_opt, String src_domain, String src_repo,
+			String tgt_domain, String tgt_repo, String dev_group,
+			String emailGroup) {
+		
+		this.mig_opt = mig_opt;
+		this.src_domain = src_domain;
+		this.src_repo = src_repo;
+		this.tgt_domain = tgt_domain;
+		this.tgt_repo = tgt_repo;
+		this.dev_group = dev_group;
+		this.emailGroup = emailGroup;
 	}
-	public void setAdminUserName(String adminUserName) {
-		this.adminUserName = adminUserName;
+	
+	public MigrationParams()
+	{
+		
 	}
-	public String getAdminPassword() {
-		return adminPassword;
+	public int getMig_opt() {
+		return mig_opt;
 	}
-	public void setAdminPassword(String adminPassword) {
-		this.adminPassword = adminPassword;
+	public void setMig_opt(int mig_opt) {
+		this.mig_opt = mig_opt;
 	}
-	public String getSourceRepo() {
-		return sourceRepo;
+	public String getSrc_domain() {
+		return src_domain;
 	}
-	public void setSourceRepo(String sourceRepo) {
-		this.sourceRepo = sourceRepo;
+	public void setSrc_domain(String src_domain) {
+		this.src_domain = src_domain;
 	}
-	public String getTargetRepo() {
-		return targetRepo;
+	public String getSrc_repo() {
+		return src_repo;
 	}
-	public void setTargetRepo(String targetRepo) {
-		this.targetRepo = targetRepo;
+	public void setSrc_repo(String src_repo) {
+		this.src_repo = src_repo;
 	}
-	public String getSourceDomain() {
-		return sourceDomain;
+	public String getTgt_domain() {
+		return tgt_domain;
 	}
-	public void setSourceDomain(String sourceDomain) {
-		this.sourceDomain = sourceDomain;
+	public void setTgt_domain(String tgt_domain) {
+		this.tgt_domain = tgt_domain;
 	}
-	public String getTargetDomain() {
-		return targetDomain;
+	public String getTgt_repo() {
+		return tgt_repo;
 	}
-	public void setTargetDomain(String targetDomain) {
-		this.targetDomain = targetDomain;
+	public void setTgt_repo(String tgt_repo) {
+		this.tgt_repo = tgt_repo;
 	}
-	public String getDgName() {
-		return dgName;
+	public String getDev_group() {
+		return dev_group;
 	}
-	public void setDgName(String dgName) {
-		this.dgName = dgName;
+	public void setDev_group(String dev_group) {
+		this.dev_group = dev_group;
 	}
-	public List<HashMap<String, String>> getSourceTargetMap() {
-		return sourceTargetMap;
+	public String getEmailGroup() {
+		return emailGroup;
 	}
-	public void setSourceTargetMap(List<HashMap<String, String>> sourceTargetMap) {
-		this.sourceTargetMap = sourceTargetMap;
+	public void setEmailGroup(String emailGroup) {
+		this.emailGroup = emailGroup;
 	}
-	public String getControlFileName() {
-		return controlFileName;
-	}
-	public void setControlFileName(String controlFileName) {
-		this.controlFileName = controlFileName;
-	}
+	
+	
 	
 }
