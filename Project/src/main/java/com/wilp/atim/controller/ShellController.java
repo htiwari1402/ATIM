@@ -76,6 +76,6 @@ public class ShellController {
       catch (IOException e) {
   		e.printStackTrace();
   	}
-      	return S+migrationScript;
+      	return S;
     }
     }
