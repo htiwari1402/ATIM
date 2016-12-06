@@ -62,15 +62,37 @@ $(document).ready(function(){
 				$('#tkt_no_show').html(responseText);
 				$('#tkt_no').val(responseText);
 			});
+	$( "#tabs" ).tabs();
+	$(".nu").button();
 });
 
 function migrate()
 {
+	var controlFileType = $('#controlFileType').val();
+	var src_repo = $('#src_repo').val();
+	var tgt_repo = $('#tgt_repo').val();
 	var control_param_text = $('#control_param_text').val();
-	var postData = {
-						"control_param_text":control_param_text
-					};
-	$.post("genXML",postData,function(response)
+	controlFileType = parseInt(controlFileType);
+	var url = "";
+	if(controlFileType == 1)
+		{
+			url = "genXML";
+			var postData = {
+					"control_param_text":control_param_text
+				};
+		}
+	else
+		{
+			url = "genXML2";
+			var postData= 	{
+								"control_param_text":control_param_text,
+								"src_repo":src_repo,
+								"tgt_repo":tgt_repo
+							}
+		}
+	
+	
+	$.post(url,postData,function(response)
 			{
 				if(parseInt(response) == 1)
 					{
