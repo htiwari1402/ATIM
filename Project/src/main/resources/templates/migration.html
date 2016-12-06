@@ -6,10 +6,10 @@
 <title>Automation Tool for Informatica Migration</title>
 <style type="text/css">
 body {
-background-color: #f4f4f4;
+/* background-color: #f4f4f4; */
 color: #5a5656;
 font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-font-size: 16px;
+font-size: 13px;
 line-height: 1.5em;
 }
 a { text-decoration: none; }
@@ -62,67 +62,127 @@ font-size: 10px;
 }
 </style>
 <script src="app/js/jquery-3.1.1.min.js"></script>
+<script src="app/jquery-ui.js"></script>
+<link rel="stylesheet" href="app/jquery-ui.css">
 <script src="app/js/script.js"></script>
 </head>
 <body>
-<h1 style = "text-align:center;">Migration Form</h1>
+<h1 style = "text-align:center;font-size:2em;">Migration Form</h1><br>
 <div align = "center">
-<form id="mig_form" method="post" action="execShell">
-<label for = "Ticket Number"> Ticket Number </label>
-<span style="color:red;" id="tkt_no_show"></span>
+<script>
+$( "#tabs" ).tabs();
+</script>
+<b><label for = "Ticket Number"> Ticket Number </label>
+<span style="color:red;" id="tkt_no_show"></span></b>
+<div id="tabs">
+  <ul>
+    <li><a href="#fragment-1"><span>Informatica Objects</span></a></li>
+    <li><a href="#fragment-2"><span>Unix File Migration</span></a></li>
+  </ul>
+<div id="fragment-1">  
+<form id="mig_form" method="post" action="execShell" style="text-align: left;
+    line-height: 2.5em;
+    margin-left: 8%;
+    font-family: helvetica;">
 
 <input id="tkt_no" name="tkt_no" type="hidden">
-<br><br>
- 
-<input type="radio" id="mig_opt" name="mig_opt"  value="0"> Informatica Objects 
-<input type="radio" id="mig_opt" name="mig_opt"  value="1"> Unix File Migration<br>
-
+<table>
+<tr>
+<td>
 <label> Source Domain </label> 
+</td><td>
 <select id="src_domain" name="src_domain">
 <option value="server1211.mnchost.com" selected>Server 1</option>
 <option value="server1211.mnchost.com">Server 2</option>
-</select> <br> </br> 
-
-<label> Target Domain </label> 
+</select></td>
+</tr>
+<tr><td>
+<label> Target Domain </label> </td><td>
 <select id="tgt_domain" name="tgt_domain">
 <option value="server1211.mnchost.com" selected>Server 1</option>
 <option value="server1211.mnchost.com">Server 2</option>
-</select> <br> </br> 
-
-<label> Source Repository </label> 
+</select> </td></tr>
+<tr><td>
+<label> Source Repository </label> </td><td>
 <select id="src_repo" name="src_repo">
 <option value="Src_Repo_db" selected>Src_Repo_db</option>
 <option value="Tgt_Repo_db">Tgt_Repo_db</option>
-</select> <br> </br> 
-<label> Target Repository </label> 
+</select> </td></tr>
+<tr><td>
+<label> Target Repository </label> </td>
+<td>
 <select id="tgt_repo" name="tgt_repo">
 <option value="Src_Repo_db" selected>Src_Repo_db</option>
 <option value="Tgt_Repo_db">Tgt_Repo_db</option> 
-</select> <br></br>
-
-<label> Deployment GroupName / XML FileName </label> 
+</select></td>
+</tr>
+<tr>
+<td>
+<label> Select Deployment GroupName or XML FileName </label> </td>
+<td>
+<select id="controlFileType" name="controlFileType">
+<option value="1" selected>Deployment GroupName</option>
+<option value="2">XML FileName</option> 
+</select> </td>
+</tr><tr><td>
+<label> Enter FileName </label> </td>
+<td>
 <input type="text" id="dep_group" name="dev_group">
-
-<label> Enter email to add alerts </label> 
+</td></tr><tr>
+<td>
+<label> Enter email to add alerts </label> </td>
+<td>
 <select id="email" name="email">
 <option value="poojamittal2391@gmail.com" selected>poojamittal2391@gmail.com</option>
 <option value="htiwari1402@gmail.com">htiwari1402@gmail.com</option> 
 </select> 
-<input type="button" value="Add Email" onclick="addEmail();">
-<br></br>
-<label> Email Group </label> 
+<input type="button" value="Add Email" class="nu" onclick="addEmail();">
+</td></tr>
+<tr><td>
+<label> Email Group </label></td><td>
 <textarea id="emailGroup" name="emailGroup">
 </textarea>
-
-<br><br>
-<label> Enter Source Folder and Target Folder () </label> 
+</td></tr><tr>
+<td>
+<label> Enter Source Folder and Target Folder </label></td> 
+<td>
 <textarea id="control_param_text" name="control_param_text">
-</textarea>
-
-<p><input type="button" value="Submit" onclick="migrate();"></p>
+</textarea></td></tr>
+</table>
+<p><input type="button" value="Submit" class="nu" onclick="migrate();"></p>
 
 </form> 
 </div>
+<div id="fragment-2">
+<form id="mig_form_2" method="post" action="execShell" style="text-align: left;
+    line-height: 2.5em;
+    margin-left: 8%;
+    font-family: helvetica;">
+<table>
+<tr><td>
+<label> Enter FileName </label> </td>
+<td>
+<input type="text" id="dep_group" name="dev_group">
+</td></tr><tr>
+<td>
+<label> Enter email to add alerts </label> </td>
+<td>
+<select id="email" name="email">
+<option value="poojamittal2391@gmail.com" selected>poojamittal2391@gmail.com</option>
+<option value="htiwari1402@gmail.com">htiwari1402@gmail.com</option> 
+</select> 
+<input type="button" value="Add Email" class="nu" onclick="addEmail();">
+</td></tr>
+<tr><td>
+<label> Email Group </label></td><td>
+<textarea id="emailGroup" name="emailGroup">
+</textarea>
+</td></tr></table>
 
+<p><input type="button" value="Submit" class="nu" onclick="unixMigrate();"></p>
+</form>
+</div>
+</div>
+</div>
 </body>
 </html>
