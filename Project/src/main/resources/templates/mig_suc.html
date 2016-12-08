@@ -6,7 +6,7 @@
 <title>Automation Tool for Informatica Migration</title>
 <style type="text/css">
 body {
-/*background-color: #f4f4f4;*/
+background-color: #f4f4f4;
 color: #5a5656;
 font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 font-size: 16px;
@@ -42,28 +42,30 @@ padding: 0px 10px;
 width: 280px;
 -webkit-appearance:none;
 }
+form fieldset input[type="submit"] {
+background-color: #008dde;
+border: none;
+border-radius: 3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+color: #f4f4f4;
+cursor: pointer;
+font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+height: 50px;
+text-transform: uppercase;
+width: 300px;
+-webkit-appearance:none;
+}
 form fieldset a {
 color: #5a5656;
 font-size: 10px;
 }
 </style>
 <script src="app/js/jquery-3.1.1.min.js"></script>
-<script src="app/jquery-ui.js"></script>
-<link rel="stylesheet" href="app/jquery-ui.css">
 <script src="app/js/script.js"></script>
 </head>
 <body>
-<div id="login">
-<h1 style = "text-align:center;">Welcome Administrator<br>Enter Your Credential</br>
-</h1>
-<form action="javascript:void(0);" method="get">
-<fieldset>
-<p><input type="text" id="username" required value="Username" onBlur="if(this.value=='')this.value='Username'" onFocus="if(this.value=='Username')this.value='' "></p>
-<p><input type="password" id="password" required value="Password" onBlur="if(this.value=='')this.value='Password'" onFocus="if(this.value=='Password')this.value='' "></p>
-<p><a href="#" id="error"></a></p>
-<p><input type="submit" value="Login" class="nu" onclick="login();"></p>
-</fieldset>
-</form>
-</div> <!-- end login -->
+<a href="logout"><input type="button" class="nu" style="float:right" value="Log out"></a>
+Migration is successful.<a href="migration">Back to new migration.</a>
 </body>
 </html>

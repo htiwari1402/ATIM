@@ -67,7 +67,9 @@ font-size: 10px;
 <script src="app/js/script.js"></script>
 </head>
 <body>
-<h1 style = "text-align:center;font-size:2em;">Migration Form</h1><br>
+<h1 style = "text-align:center;font-size:2em;">Migration Form</h1>
+<a href="logout"><input type="button" class="nu" style="float:right" value="Log out"></a>
+<br>
 <div align = "center">
 <script>
 $( "#tabs" ).tabs();
@@ -154,10 +156,11 @@ $( "#tabs" ).tabs();
 </form> 
 </div>
 <div id="fragment-2">
-<form id="mig_form_2" method="post" action="execShell" style="text-align: left;
+<form id="mig_form_2" method="post" action="execFileShell" style="text-align: left;
     line-height: 2.5em;
     margin-left: 8%;
     font-family: helvetica;">
+<input id="file_tkt_no" name="file_tkt_no" type="hidden">
 <table>
 <tr><td>
 <label> Enter FileName </label> </td>
@@ -167,15 +170,15 @@ $( "#tabs" ).tabs();
 <td>
 <label> Enter email to add alerts </label> </td>
 <td>
-<select id="email" name="email">
+<select id="fileEmail" name="fileEmail">
 <option value="poojamittal2391@gmail.com" selected>poojamittal2391@gmail.com</option>
 <option value="htiwari1402@gmail.com">htiwari1402@gmail.com</option> 
 </select> 
-<input type="button" value="Add Email" class="nu" onclick="addEmail();">
+<input type="button" value="Add Email" class="nu" onclick="addFileEmail();">
 </td></tr>
 <tr><td>
 <label> Email Group </label></td><td>
-<textarea id="emailGroup" name="emailGroup">
+<textarea id="fileEmailGroup" name="emailGroup">
 </textarea>
 </td></tr></table>
 
