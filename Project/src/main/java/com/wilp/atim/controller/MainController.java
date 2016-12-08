@@ -62,6 +62,12 @@ public class MainController {
  				return 0;
  			}
 	 }
+	 @RequestMapping("/logout")
+	 public String logout( HttpSession session ) throws Exception 
+	 {
+		 	session.invalidate();
+		 	return "logout";
+	 }
 	 
 	 @RequestMapping("/getRepo")
 	 @ResponseBody
