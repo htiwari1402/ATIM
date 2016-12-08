@@ -43,7 +43,22 @@ function addEmail()
 	var textval = $('#emailGroup').val();
 	var currEmail=$('#email').val();
 	textval = textval+','+currEmail;
+	if(textval.indexOf(',') == 0)
+		{
+			textval = textval.substring(1);
+		}
 	$('#emailGroup').val(textval);
+}
+function addFileEmail()
+{
+	var textval = $('#fileEmailGroup').val();
+	var currEmail=$('#fileEmail').val();
+	textval = textval+','+currEmail;
+	if(textval.indexOf(',') == 0)
+	{
+		textval = textval.substring(1);
+	}
+	$('#fileEmailGroup').val(textval);
 }
 
 $(document).ready(function(){
@@ -61,6 +76,7 @@ $(document).ready(function(){
 			{
 				$('#tkt_no_show').html(responseText);
 				$('#tkt_no').val(responseText);
+				$('#file_tkt_no').val(responseText);
 			});
 	$( "#tabs" ).tabs();
 	$(".nu").button();
@@ -99,4 +115,8 @@ function migrate()
 						$('#mig_form').submit();
 					}
 			});
+}
+function unixMigrate()
+{	
+	$('#mig_form_2').submit();
 }
