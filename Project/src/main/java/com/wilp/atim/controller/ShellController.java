@@ -93,7 +93,6 @@ public class ShellController {
     
     
     @RequestMapping("/execFileShell")
-    @ResponseBody
     public String execFileShell(
     							@RequestParam("file_tkt_no") int tkt_no,
     							@RequestParam("dev_group") String dev_group,
@@ -149,14 +148,14 @@ public class ShellController {
 		String sign2 = (String) jsonObject3.get("sign2");
 		String sign3 = (String) jsonObject3.get("sign3");
 		//System.out.println(S);
-		return S;
-    	/*if(S.contains(sign1) || S.contains(sign2) || S.contains(sign3))
+		
+    	if(S.contains(sign1) || S.contains(sign2) || S.contains(sign3))
     	{
     		return "mig_suc";
     	}
     	else
     	{
     		return "mig_error";
-    	}*/
+    	}
     }
     }
